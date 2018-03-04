@@ -14,15 +14,15 @@ if($method == 'POST'){
 
 	switch ($text) {
 		case 'programme':
-			$speech = "Hi, programme selected. RSS URL is " + $rss + "?limit=8&type_id=1";
+			$speech = "Hi, programme selected. " . "RSS URL is " . $rss . "?limit=8&type_id=1";
 			break;
 
 		case 'exhibition':
-			$speech = "Hi, exhibition selected. RSS URL is " + $rss + "?limit=8&type_id=2";
+			$speech = "Hi, exhibition selected. " . "RSS URL is " . $rss . "?limit=8&type_id=2";
 			break;
 
 		case 'conference':
-			$speech = "Hi, conference selected. RSS URL is " + $rss + "?limit=8&type_id=3";
+			$speech = "Hi, conference selected. " . "RSS URL is " . $rss . "?limit=8&type_id=3";
 			break;
 		
 		default:

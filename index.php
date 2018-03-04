@@ -8,52 +8,35 @@ if($method == 'POST'){
 	
 	$json = json_decode($requestBody);
 
-	$eventType = $json->result->parameters->eventType;
-	$eventId = '';
-	
-	$rss = 'https://www.nlb.gov.sg/golibrary2/events.rss';
-	
-	switch ($eventType) {
+	$text = $json->result->parameters->eventType;
+
+	switch ($text) {
 		case 'programme':
-			eventId = '1';
+			$speech = "Hi, programme selected";
 			break;
-		
+
 		case 'exhibition':
-			eventId = '2';
+			$speech = "Hi, exhibition selected";
+			break;
+
+		case 'conference':
+			$speech = "Hi, conference selected";
 			break;
 		
-		case 'conference':
-			eventId = '3';
-			break;
-			
 		default:
-			eventId = '1';
+			$speech = "Sorry, I didnt get that. Please ask me something else.";
 			break;
 	}
-	
-	//$rssURL = rss + '?limit=8&type_id=' + eventId;
-	
-	//$ch = curl_init(); 
-	// set url 
-    //curl_setopt($ch, CURLOPT_URL, $rssURL);
-	
-	//return the transfer as a string 
-	//curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
-	
-	// $output contains the output string 
-    //$output = curl_exec($ch);
-	
-	//echo $output;
-	
-	// close curl resource to free up system resources 
-    //curl_close($ch);
-	
+
 	$response = new \stdClass();
-	$response->speech = $eventId;
-	$response->displayText = $eventId;
+	$response->speech = $speech;
+	$response->displayText = $speech;
 	$response->source = "webhook";
 	echo json_encode($response);
 }
-else {
-	echo 'Method not allowed';
+else
+{
+	echo "Method not allowed";
 }
+
+?>

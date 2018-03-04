@@ -31,28 +31,28 @@ if($method == 'POST'){
 			break;
 	}
 	
-	$rssURL = rss + '?limit=8&type_id=' + eventId;
+	//$rssURL = rss + '?limit=8&type_id=' + eventId;
 	
-	$ch = curl_init(); 
+	//$ch = curl_init(); 
 	// set url 
-    curl_setopt($ch, CURLOPT_URL, $rssURL);
+    //curl_setopt($ch, CURLOPT_URL, $rssURL);
 	
 	//return the transfer as a string 
-	curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
+	//curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1); 
 	
 	// $output contains the output string 
-    $output = curl_exec($ch);
+    //$output = curl_exec($ch);
 	
-	echo $output;
+	//echo $output;
 	
 	// close curl resource to free up system resources 
-    curl_close($ch);
+    //curl_close($ch);
 	
-	//$response = new \stdClass();
-	//$response->speech = $speech;
-	//$response->displayText = $speech;
-	//$response->source = "webhook";
-	//echo json_encode($response);
+	$response = new \stdClass();
+	$response->speech = $eventId;
+	$response->displayText = $eventId;
+	$response->source = "webhook";
+	echo json_encode($response);
 }
 else {
 	echo 'Method not allowed';
